@@ -21,6 +21,7 @@ import org.springframework.util.Assert;
 import repositories.ChirpRepository;
 
 import domain.Chirp;
+import domain.User;
 
 @Service
 @Transactional
@@ -52,11 +53,13 @@ public class ChirpService {
 			// invalid.  This is quite a difficult bug to catch.
 			
 			Chirp result;
+			User user;
 			
 			result = new Chirp();
-						
-			result.setMoment(new Date());
+			user = userService.findByPrincipal();
 			
+			result.setMoment(new Date());
+			result.setUser(user);
 			return result;
 		}
 		
