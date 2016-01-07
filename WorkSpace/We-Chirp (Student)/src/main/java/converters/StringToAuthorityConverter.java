@@ -27,10 +27,16 @@ public class StringToAuthorityConverter implements Converter<String, Authority> 
 
 	@Override
 	public Authority convert(String text) {
-		
-		// TODO: implement a string-to-authority converter.
-		
-		return null;
+		Authority result;
+
+		try {
+			result = new Authority();
+			result.setAuthority(text);
+		} catch (Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
 	}
 
 }

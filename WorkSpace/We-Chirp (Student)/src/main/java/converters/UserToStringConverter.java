@@ -22,10 +22,14 @@ public class UserToStringConverter implements Converter<User, String> {
 	
 	@Override
 	public String convert(User user) {
-		
-		// TODO: implement a user-to-string converter.
-		
-		return null;
+		String result;
+
+		if (user == null)
+			result = null;
+		else
+			result = String.valueOf(user.getId());
+
+		return result;
 	}
 
 }

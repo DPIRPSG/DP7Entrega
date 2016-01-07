@@ -22,10 +22,14 @@ public class AuthorityToStringConverter implements Converter<Authority, String> 
 	
 	@Override
 	public String convert(Authority authority) {
+		String result;
 
-		// TODO: implement an authority-to-string converter
-		
-		return null;
+		if (authority == null)
+			result = null;
+		else
+			result = authority.getAuthority();
+
+		return result;
 	}
 
 }

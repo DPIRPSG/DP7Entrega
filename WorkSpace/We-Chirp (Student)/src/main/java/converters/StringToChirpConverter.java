@@ -10,6 +10,7 @@
 
 package converters;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -27,10 +28,21 @@ public class StringToChirpConverter implements Converter<String, Chirp> {
 
 	@Override
 	public Chirp convert(String text) {
-		
-		// TODO: implement a string-to-chirp converter.
-		
-		return null;
+		Chirp result;
+		int id;
+
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = chirpRepository.findOne(id);
+			}
+		} catch (Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
 	}
 
 }

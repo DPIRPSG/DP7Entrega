@@ -22,10 +22,13 @@ public class ChirpToStringConverter implements Converter<Chirp, String> {
 	
 	@Override
 	public String convert(Chirp chirp) {
+		String result;
 
-		// TODO: implement a chirp-to-string converter.
+		if (chirp == null)
+			result = null;
+		else
+			result = String.valueOf(chirp.getId());
 
-		return null;
-	}
+		return result;	}
 
 }

@@ -10,6 +10,7 @@
 
 package converters;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -27,10 +28,21 @@ public class StringToUserConverter implements Converter<String, User> {
 
 	@Override
 	public User convert(String text) {
+		User result;
+		int id;
 
-		// TODO: implement a string-to-user converter.
-		
-		return null;
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = userRepository.findOne(id);
+			}
+		} catch (Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
 	}
 
 }
