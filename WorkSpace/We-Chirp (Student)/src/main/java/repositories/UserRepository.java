@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	// TODO: write a JPQL query that returns the user who owns the 
 	// user account whose identifier is passed as as parameter.  
 	
-	@Query("")
+	@Query("select u from User u where u.userAccount.id = ?1")
 	User findByUserAccountId(int userAccountId);
 		
 }

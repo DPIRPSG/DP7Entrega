@@ -10,8 +10,15 @@
 
 package services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.UserRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 
 import domain.User;
 
@@ -22,10 +29,14 @@ public class UserService {
 	// Managed repository -----------------------------------------------------
 
 	// TODO: add the required managed repositories.
+	@Autowired
+	private UserRepository userRepository;
 	
 	// Supporting services ----------------------------------------------------
 	
 	// TODO: add the required managed services.
+	@Autowired
+	private UserAccountService userAccountService;
 	
 	// HINT: you're very likely to require an MD5 password encoder.  Search 
 	// the Web to find information on how to implement such an encoder in Java.
@@ -44,7 +55,15 @@ public class UserService {
 		// be edited.  Don't forget to assign an appropriate authority and an 
 		// empty collection of chirps.
 		
-		return null;
+		User result;
+		UserAccount userAccount;
+
+		result = new User();
+		
+		userAccount = userAccountService.create("USER");
+		result.setUserAccount(userAccount);
+		
+		return result;
 	}
 		
 	public void save(User user) {
@@ -54,7 +73,26 @@ public class UserService {
 		// it's saved to the database.  Passwords should never be stored in plain 
 		// text in professional web information systems.  Please consult the 
 		// supporting services if you don't know how to hash a password.
+		Assert.notNull(user);
+				
+		boolean result = true;
+		for(Authority a: user.getUserAccount().getAuthorities()){
+			if(!a.getAuthority().equals("USER")){
+				result = false;
+				break;
+			}
+		}
+		Assert.isTrue(result, "A user can only be a authority.user");
 		
+		if(user.getId() == 0){
+			UserAccount auth;
+			
+			//Encoding password
+			auth = user.getUserAccount();
+			auth = userAccountService.modifyPassword(auth);
+			user.setUserAccount(auth);
+		}
+		userRepository.save(user);
 	}
 
 	// Other business methods -------------------------------------------------
@@ -64,7 +102,15 @@ public class UserService {
 		// TODO: implement this method so that it returns the "User" object that
 		// corresponds to the principal. 
 		
-		return null;		
+		User result;
+		UserAccount userAccount;
+		
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		result = userRepository.findByUserAccountId(userAccount.getId());
+		Assert.notNull(result);
+		
+		return result;		
 	}
 	
 }

@@ -26,14 +26,14 @@ public interface ChirpRepository extends JpaRepository<Chirp, Integer> {
 	// since the date that is indicated; the collection must be ordered in descending
 	// order of moment.
 	
-	@Query("")
+	@Query("select c from Chirp c where year(c.moment) >= ?1 order by c.moment desc")
 	Collection<Chirp> findLatest(Date since);
 
 	// TODO: write a JPQL query that returns the chirps that were published by the
 	// user whose id is passed as a parameter; the collection must be ordered in descending
 	// order of moment.
 	
-	@Query("")
+	@Query("select c from Chirp c where c.user.id = ?1 order by c.moment desc")
 	Collection<Chirp> findByUserId(int userId);
 		
 }
