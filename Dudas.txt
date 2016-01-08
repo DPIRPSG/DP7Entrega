@@ -1,0 +1,7 @@
+DP7Entrega 7 - Dudas
+
+1) Modificar o no los datos del administrados en la carga inicial de datos
+2) Quitar o no los LOCK TABLES
+3) Quitar o no los “hibernate_sequences”
+4) Quitar o no la “tasa general”
+5)
