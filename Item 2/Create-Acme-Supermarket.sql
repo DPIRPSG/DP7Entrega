@@ -1,3 +1,17 @@
+﻿start transaction;
+
+create database 'Acme-Supermarket';
+
+use 'Acme-Supermarket';
+
+create user 'acme-user'@'%' identified by password '*4F10007AADA9EE3DBB2CC36575DFC6F4FDE27577';
+
+create user 'acme-manager'@'%' identified by password '*FDB8CD304EB2317D10C95D797A4BD7492560F55F';
+
+grant select, insert, update, delete on `Sample`.* to 'acme-user'@'%';
+
+grant select, insert, update, delete, create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on `Sample`.* to 'acme-manager'@'%';
+
 -- MySQL dump 10.13  Distrib 5.5.29, for Win64 (x86)
 --
 -- Host: localhost    Database: Acme-Supermarket
@@ -72,7 +86,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (58,0,'Productos alimenticios','Alimentos',NULL,52),(59,0,'Productos electrónicos','Electrónica',NULL,51),(60,0,'Productos de cosmética','Cosmética',NULL,51),(61,0,'Productos de ropa','Ropa',NULL,51),(62,0,'Productos deportivos','Deporte',NULL,51),(63,0,'Diferentes eventos','Eventos',NULL,53);
+
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +117,7 @@ CREATE TABLE `clerk` (
 
 LOCK TABLES `clerk` WRITE;
 /*!40000 ALTER TABLE `clerk` DISABLE KEYS */;
-INSERT INTO `clerk` VALUES (21,0,'carlos@mail.com','Carlos','633449087','Mata',6),(22,0,'ana@mail.com','Ana','633946087','pozo',9),(23,0,'alberto@mail.com','Alberto','633940257','Rodriguez',10);
+
 /*!40000 ALTER TABLE `clerk` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +148,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (72,0,5,'Es un gran producto, totalmente recomendado','Turron','manolo_95',64),(73,0,5,'Gran TV','TV','guille_95',65),(74,0,3,'No está mal','Cosmético','ruben_95',66),(75,0,1,'muy malo','Cosmético mujer','manolo_95',66),(76,0,5,'muy buenos','Filetes','Carniceria_pepe',67),(77,0,5,'riquísimos','Filetes de cerdo','guille_95',67),(78,0,4,'muy buenas','Patatas','guille_95',68),(79,0,5,'buena relación calidad-precio','Patatas fritas','manolo_95',68),(80,0,4,'muy ricas','Patatas fritas de acme','ruben_95',68);
+
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +182,7 @@ CREATE TABLE `consumer` (
 
 LOCK TABLES `consumer` WRITE;
 /*!40000 ALTER TABLE `consumer` DISABLE KEYS */;
-INSERT INTO `consumer` VALUES (13,1,'manolo@mail.com','Manolo','612345789','Lopez',5,14),(15,1,'ruben@mail.com','Ruben','612342289','Sanchez',7,16),(17,1,'guillermo@mail.com','Guillermo','633422897','Alcala',8,18),(19,1,'monica@mail.com','Mónica','626667791','Ordóñez',11,20);
+
 /*!40000 ALTER TABLE `consumer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +213,7 @@ CREATE TABLE `content` (
 
 LOCK TABLES `content` WRITE;
 /*!40000 ALTER TABLE `content` DISABLE KEYS */;
-INSERT INTO `content` VALUES (93,0,2,64,14),(94,0,1,65,16),(95,0,3,66,18),(96,0,3,67,14);
+
 /*!40000 ALTER TABLE `content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +295,7 @@ CREATE TABLE `folder` (
 
 LOCK TABLES `folder` WRITE;
 /*!40000 ALTER TABLE `folder` DISABLE KEYS */;
-INSERT INTO `folder` VALUES (25,0,'','InBox',12),(26,0,'','OutBox',12),(27,0,'','TrashBox',12),(28,0,'','InBox',13),(29,0,'','OutBox',13),(30,0,'','TrashBox',13),(31,0,'','InBox',21),(32,0,'','OutBox',21),(33,0,'','TrashBox',21),(34,0,'','InBox',15),(35,0,'','OutBox',15),(36,0,'','TrashBox',15),(37,0,'','InBox',17),(38,0,'','OutBox',17),(39,0,'','TrashBox',17),(40,0,'','InBox',22),(41,0,'','OutBox',22),(42,0,'','TrashBox',22),(43,0,'','InBox',23),(44,0,'','OutBox',23),(45,0,'','TrashBox',23),(46,0,'','InBox',19),(47,0,'','OutBox',19),(48,0,'','TrashBox',19),(49,0,'\0','Importantes',15),(50,0,'\0','Importantes',19);
+INSERT INTO `folder` VALUES (25,0,'','InBox',12),(26,0,'','OutBox',12),(27,0,'','TrashBox',12);
 /*!40000 ALTER TABLE `folder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,7 +322,7 @@ CREATE TABLE `folder_message` (
 
 LOCK TABLES `folder_message` WRITE;
 /*!40000 ALTER TABLE `folder_message` DISABLE KEYS */;
-INSERT INTO `folder_message` VALUES (26,24),(28,24),(31,24),(34,24),(39,24),(40,24),(43,24),(46,24),(49,24);
+
 /*!40000 ALTER TABLE `folder_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +379,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (64,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','http://www.misthermorecetas.com/wp-content/uploads/2013/01/turron_chocolate_crujiente11.jpg',1.99,'AB-H6GH',58),(65,0,'\0','El mejor televisor para las mejores series','Televisor','http://i.kinja-img.com/gawker-media/image/upload/lwg7g1pdr3azlrd4vfqo.png',699.99,'CJ-C8JW',59),(66,0,'\0','Colonia de mujer','Colonia','http://i.anuxi.ec/i-a/Dyne-32.jpg',10.9,'9G-H58D',60),(67,0,'\0','Filete bueno y barato','Filete de cerdo','http://azu1.facilisimo.com/ima/i/1/8/3b/am_79224_4508052_81641.jpg',3.5,'Vl-3H95',58),(68,0,'','Las mejores patatas','Patatas fritas',NULL,0.99,'01-MN7Y',58),(69,0,'\0','Los mejores tomates','Tomates',NULL,0.2,'HA-HAAA',58),(70,0,'\0','Las mejores lechugas','Lechugas',NULL,0.1,'BS-1212',58),(71,0,'\0','La mejor tablet del mercado','Tablet','http://www6.pcmag.com/media/images/402617-surface-pro-4.jpg',100,'OH-GO0D',59);
+
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,7 +404,7 @@ CREATE TABLE `item_tags` (
 
 LOCK TABLES `item_tags` WRITE;
 /*!40000 ALTER TABLE `item_tags` DISABLE KEYS */;
-INSERT INTO `item_tags` VALUES (64,'Dulce'),(64,'Turron'),(64,'Chocolate'),(65,'TV'),(65,'Full-HD'),(65,'Smart-TV'),(66,'Colonia'),(67,'Filete'),(67,'Cerdo'),(67,'Carne'),(68,'Patatas'),(68,'Fritas'),(69,'Tomates'),(69,'Verduras'),(69,'Frescos'),(70,'Lechugas'),(70,'Verduras'),(70,'Frescas'),(71,'Tablet'),(71,'Buena'),(71,'Electronica');
+
 /*!40000 ALTER TABLE `item_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +432,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (24,0,'Registrado con exito, bienvenido a Acme-Supermarket','2015-10-13 22:15:00','Bienvenido',12);
+
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,7 +457,7 @@ CREATE TABLE `message_actor` (
 
 LOCK TABLES `message_actor` WRITE;
 /*!40000 ALTER TABLE `message_actor` DISABLE KEYS */;
-INSERT INTO `message_actor` VALUES (24,13),(24,15),(24,17),(24,19),(24,21),(24,22),(24,23);
+
 /*!40000 ALTER TABLE `message_actor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,7 +494,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (116,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,2,0,103),(117,0,'\0','El mejor televisor para las mejores series','Televisor','electronica',NULL,699.99,'CJ-C8JW',21,1,1,104),(118,0,'\0','Colonia de mujer','Colonia','cosmética',NULL,10.9,'9G-H58D',21,3,0,105),(119,0,'\0','Filete bueno y barato','Filete de cerdo','alimentos',NULL,3.5,'Vl-3H95',4,3,0,106),(120,0,'\0','El mejor televisor para las mejores series','Televisor','electronica',NULL,699.99,'CJ-C8JW',21,1,0,107),(121,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,5,5,108),(122,0,'\0','Colonia de mujer','Colonia','cosmética',NULL,10.9,'9G-H58D',21,2,2,109),(123,0,'\0','Filete bueno y barato','Filete de cerdo','alimentos',NULL,3.5,'Vl-3H95',4,1,1,110),(124,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,5,5,111),(125,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,5,0,112),(126,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,2,0,113),(127,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,2,0,114),(128,0,'\0','El mejor televisor para las mejores series','Televisor','electronica',NULL,699.99,'CJ-C8JW',21,1,0,115),(129,0,'\0','se acerca la navidad, compra el mejor turron de chocolate','Turrón de chocolate','alimentos',NULL,1.99,'AB-H6GH',4,1,0,115);
+
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +519,7 @@ CREATE TABLE `orderitem_tags` (
 
 LOCK TABLES `orderitem_tags` WRITE;
 /*!40000 ALTER TABLE `orderitem_tags` DISABLE KEYS */;
-INSERT INTO `orderitem_tags` VALUES (116,'Dulce'),(116,'Turron'),(116,'Chocolate'),(117,'TV'),(117,'Full-HD'),(117,'Smart-TV'),(118,'Colonia'),(119,'Filete'),(119,'Cerdo'),(119,'Carne'),(120,'TV'),(120,'Full-HD'),(120,'Smart-TV'),(121,'Dulce'),(121,'Turron'),(121,'Chocolate'),(122,'Colonia'),(123,'Filete'),(123,'Cerdo'),(123,'Carne'),(124,'Dulce'),(124,'Turron'),(124,'Chocolate'),(125,'Dulce'),(125,'Turron'),(125,'Chocolate'),(126,'Dulce'),(126,'Turron'),(126,'Chocolate'),(127,'Dulce'),(127,'Turron'),(127,'Chocolate'),(128,'TV'),(128,'Full-HD'),(128,'Smart-TV'),(129,'Dulce'),(129,'Turron'),(129,'Chocolate');
+
 /*!40000 ALTER TABLE `orderitem_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -548,7 +562,7 @@ CREATE TABLE `ordertable` (
 
 LOCK TABLES `ordertable` WRITE;
 /*!40000 ALTER TABLE `ordertable` DISABLE KEYS */;
-INSERT INTO `ordertable` VALUES (103,0,'calle Zaragoza nº8',3.98,NULL,'visa',267,7,2016,'Manolo','4143672806408593',NULL,'2015-11-01 09:15:00','123456-FH8J',21,13),(104,0,'calle Sevilla nº8',699.99,NULL,'visa',639,12,2015,'Ruben','4014226416609441','2015-11-29 10:00:00','2015-11-28 17:55:00','654321-FH8J',22,15),(105,0,'calle Cádiz nº8',32.7,'2015-12-01 09:45:00','visa',143,2,2016,'Guillermo','4019547713317569',NULL,'2015-11-01 06:55:00','654721-FPKJ',23,17),(106,0,'calle Sevilla nº8',10.5,'2015-12-28 19:45:00','visa',639,12,2015,'Ruben','4014226416609441',NULL,'2015-10-27 17:55:00','854911-LH8J',22,15),(107,0,'calle Cádiz nº8',699.99,'2015-05-29 19:45:00','visa',143,2,2016,'Guillermo','4019547713317569',NULL,'2015-05-24 17:55:00','694721-ABCD',21,17),(108,0,'calle Cádiz nº8',9.95,NULL,'visa',143,2,2016,'Guillermo','4019547713317569','2015-05-25 19:45:00','2015-05-20 17:55:00','694721-AHCD',22,17),(109,0,'calle Sevilla nº8',21.8,NULL,'visa',639,12,2015,'Ruben','4014226416609441','2015-09-29 10:00:00','2015-09-26 17:55:00','654321-018J',23,15),(110,0,'calle Afrodita nº2',3.5,NULL,'visa',683,9,2016,'Monica','4794199409160431','2015-09-19 10:00:00','2015-09-16 18:55:00','654748-Q9DJ',21,19),(111,0,'calle Afrodita nº2',9.95,NULL,'visa',683,9,2016,'Monica','4794199409160431','2015-09-22 10:00:00','2015-09-21 18:55:00','108748-Q9F4',22,19),(112,0,'calle Afrodita nº2',9.95,NULL,'visa',683,9,2016,'Monica','4794199409160431',NULL,'2015-11-12 17:55:00','112348-KDL8',NULL,19),(113,0,'calle Afrodita nº2',9.95,'2015-12-06 18:00:00','visa',683,9,2016,'Monica','4794199409160431',NULL,'2015-12-04 17:55:00','112221-K5L8',NULL,19),(114,0,'calle Afrodita nº2',9.95,'2015-12-16 18:00:00','visa',683,9,2016,'Monica','4794199409160431',NULL,'2015-12-14 11:55:00','112000-K5L8',NULL,19),(115,0,'calle Afrodita nº2',701.98,NULL,'visa',267,7,2016,'Manolo','4143672806408593',NULL,'2015-12-13 11:55:00','110000-K5L8',NULL,13);
+
 /*!40000 ALTER TABLE `ordertable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -575,7 +589,7 @@ CREATE TABLE `shoppingcart` (
 
 LOCK TABLES `shoppingcart` WRITE;
 /*!40000 ALTER TABLE `shoppingcart` DISABLE KEYS */;
-INSERT INTO `shoppingcart` VALUES (14,0,13),(16,0,15),(18,0,17),(20,0,19);
+
 /*!40000 ALTER TABLE `shoppingcart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -600,7 +614,7 @@ CREATE TABLE `shoppingcart_comments` (
 
 LOCK TABLES `shoppingcart_comments` WRITE;
 /*!40000 ALTER TABLE `shoppingcart_comments` DISABLE KEYS */;
-INSERT INTO `shoppingcart_comments` VALUES (14,'Muy buen carrito'),(16,'Me gusta'),(18,'Muy bueno'),(20,'Gran carrito');
+
 /*!40000 ALTER TABLE `shoppingcart_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -631,7 +645,7 @@ CREATE TABLE `storage` (
 
 LOCK TABLES `storage` WRITE;
 /*!40000 ALTER TABLE `storage` DISABLE KEYS */;
-INSERT INTO `storage` VALUES (88,0,10,64,81),(89,0,5,65,81),(90,0,10,66,81),(91,0,10,67,81),(92,0,4,64,82);
+
 /*!40000 ALTER TABLE `storage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -657,7 +671,7 @@ CREATE TABLE `tax` (
 
 LOCK TABLES `tax` WRITE;
 /*!40000 ALTER TABLE `tax` DISABLE KEYS */;
-INSERT INTO `tax` VALUES (51,0,'Tasa general',21),(52,0,'Tasa comida',4),(53,0,'Tasa cultural',21),(54,0,'Tasa reducida',10),(55,0,'Tasa oferta',1),(56,0,'Tasa de lujo',40),(57,0,'Tasa rebajas',15);
+
 /*!40000 ALTER TABLE `tax` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -684,7 +698,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (4,0,'21232f297a57a5a743894a0e4a801fc3','admin'),(5,0,'4ee9c60cc32e6615c3c45dc6822c45de','consumer1'),(6,0,'72121c039f48bb6241c94332cadc945e','clerk1'),(7,0,'4ca80127919a65aace84bc96346c5bc4','consumer2'),(8,0,'8be8dff8f3a089b30b5e97f00a04cb71','consumer3'),(9,0,'331c8a338939ee7853c1e66182673242','clerk2'),(10,0,'23aadaa3f6c8129b729beacc6f87330c','clerk3'),(11,0,'e397705af838b414380b125b7ae1979f','consumer4');
+INSERT INTO `useraccount` VALUES (4,0,'21232f297a57a5a743894a0e4a801fc3','admin');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -709,7 +723,7 @@ CREATE TABLE `useraccount_authorities` (
 
 LOCK TABLES `useraccount_authorities` WRITE;
 /*!40000 ALTER TABLE `useraccount_authorities` DISABLE KEYS */;
-INSERT INTO `useraccount_authorities` VALUES (4,'ADMIN'),(5,'CONSUMER'),(6,'CLERK'),(7,'CONSUMER'),(8,'CONSUMER'),(9,'CLERK'),(10,'CLERK'),(11,'CONSUMER');
+INSERT INTO `useraccount_authorities` VALUES (4,'ADMIN');
 /*!40000 ALTER TABLE `useraccount_authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -735,7 +749,7 @@ CREATE TABLE `warehouse` (
 
 LOCK TABLES `warehouse` WRITE;
 /*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
-INSERT INTO `warehouse` VALUES (81,0,'Cartuja s/n','Almacén Cartuja'),(82,0,'Dos Hermanas s/n','Almacén Dos Hermanas'),(83,0,'Cádiz s/n','Almacén Cádiz'),(84,0,'Triana s/n','Almacén Triana'),(85,0,'Bellavista s/n','Almacén Bellavista'),(86,0,'Jerez s/n','Almacén Jerez'),(87,0,'Nervión s/n','Almacén Nervión');
+
 /*!40000 ALTER TABLE `warehouse` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -749,3 +763,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-01-08 16:17:32
+
+commit;
