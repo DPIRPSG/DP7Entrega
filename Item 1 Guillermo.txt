@@ -1,0 +1,19 @@
+DPEntrega 7 - Item 1
+
+Deliver a report in which you explain how you’ve set up your pre-production configuration. Depending on your choices it might be 100- or 1000-word long. Please, provide screenshots if necessary.
+
+
+Para la instalación de la máquina virtual “Pre-production configuration”, primero la descargamos del servidor proporcionado en las diapositivas, el mismo de dónde obtuvimos la máquina “Developer’s configuration”. Arrancamos la máquina virtual y empezamos su configuración.
+
+Tras esto nos disponemos a activar el dominio www.acme.com. Para ello abrimos una terminal (cmd.exe) y nos colocamos en la carpeta C:\WINDOWS\system32>. Escribimos los siguientes comandos en la terminal:
+	cd %windir%\system32\drivers\etc
+	notepad hosts
+
+A ese archivo, se le añaden las siguientes líneas con el fin de poder emular el dominio www.acme.com como el localhost:
+	127.0.0.1 localhost
+	127.0.0.1 www.acme.com
+
+Tras esto limpiamos la cache DNS con el comando:
+	ipconfig /flushdns
+
+Para asegurarnos de que todo funciona como es debido, decidimos realizar un ping al nuevo dominio (www.acme.com). Vemos que hemos realizado bien la configuración ya que nos devuelve una respuesta desde 127.0.0.1 (localhost).
