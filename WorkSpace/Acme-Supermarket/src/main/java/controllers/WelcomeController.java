@@ -69,6 +69,10 @@ public class WelcomeController extends AbstractController {
 		Collection<ExchangeRate> moneyList;
 		Collection<CustomizationInfo> customizations;
 		int customId;
+		boolean hayItem, noHayItem;
+		
+		hayItem = true;
+		noHayItem = false;
 
 		exchangeRate = null;
 		moneyList = exchangeRateService.findAll();
@@ -84,7 +88,15 @@ public class WelcomeController extends AbstractController {
 		Item item;
 
 		items = itemService.findItemBestSelling();
+		
+		if(items.isEmpty()) {
+			hayItem = false;
+			noHayItem = true;
+			item = null;
+		} else {
 		item = items.iterator().next();
+		}
+		
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
@@ -96,6 +108,8 @@ public class WelcomeController extends AbstractController {
 		result.addObject("moneyList", moneyList);
 		result.addObject("exchangeRate", exchangeRate);
 		result.addObject("customizations", customizations);
+		result.addObject("hayItem", hayItem);
+		result.addObject("noHayItem", noHayItem);
 		
 		if(messageStatus != ""){
 			result.addObject("messageStatus", messageStatus);
