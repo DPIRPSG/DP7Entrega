@@ -80,15 +80,6 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `category`
---
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `clerk`
@@ -112,16 +103,6 @@ CREATE TABLE `clerk` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clerk`
---
-
-LOCK TABLES `clerk` WRITE;
-/*!40000 ALTER TABLE `clerk` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `clerk` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `comment`
 --
 
@@ -141,16 +122,6 @@ CREATE TABLE `comment` (
   CONSTRAINT `FK_pid7n4yjb555g5ae3jr4r4ena` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comment`
---
-
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `consumer`
@@ -177,16 +148,6 @@ CREATE TABLE `consumer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `consumer`
---
-
-LOCK TABLES `consumer` WRITE;
-/*!40000 ALTER TABLE `consumer` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `consumer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `content`
 --
 
@@ -206,16 +167,6 @@ CREATE TABLE `content` (
   CONSTRAINT `FK_bytjxiqrn0yl87acknmu9aibp` FOREIGN KEY (`shoppingCart_id`) REFERENCES `shoppingcart` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `content`
---
-
-LOCK TABLES `content` WRITE;
-/*!40000 ALTER TABLE `content` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `content` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `customizationinfo`
@@ -317,16 +268,6 @@ CREATE TABLE `folder_message` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `folder_message`
---
-
-LOCK TABLES `folder_message` WRITE;
-/*!40000 ALTER TABLE `folder_message` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `folder_message` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `hibernate_sequences`
 --
 
@@ -374,16 +315,6 @@ CREATE TABLE `item` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item`
---
-
-LOCK TABLES `item` WRITE;
-/*!40000 ALTER TABLE `item` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `item_tags`
 --
 
@@ -397,16 +328,6 @@ CREATE TABLE `item_tags` (
   CONSTRAINT `FK_a7nrqjrkiudooer7mlpk1dh1x` FOREIGN KEY (`Item_id`) REFERENCES `item` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_tags`
---
-
-LOCK TABLES `item_tags` WRITE;
-/*!40000 ALTER TABLE `item_tags` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `item_tags` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `message`
@@ -427,16 +348,6 @@ CREATE TABLE `message` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `message`
---
-
-LOCK TABLES `message` WRITE;
-/*!40000 ALTER TABLE `message` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `message` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `message_actor`
 --
 
@@ -450,16 +361,6 @@ CREATE TABLE `message_actor` (
   CONSTRAINT `FK_s15b8cpmjbq3qqa55fool5tp7` FOREIGN KEY (`received_id`) REFERENCES `message` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `message_actor`
---
-
-LOCK TABLES `message_actor` WRITE;
-/*!40000 ALTER TABLE `message_actor` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `message_actor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `orderitem`
@@ -489,16 +390,6 @@ CREATE TABLE `orderitem` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orderitem`
---
-
-LOCK TABLES `orderitem` WRITE;
-/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `orderitem_tags`
 --
 
@@ -512,16 +403,6 @@ CREATE TABLE `orderitem_tags` (
   CONSTRAINT `FK_bawrt5rvh6kgfadomya08c5aw` FOREIGN KEY (`OrderItem_id`) REFERENCES `orderitem` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orderitem_tags`
---
-
-LOCK TABLES `orderitem_tags` WRITE;
-/*!40000 ALTER TABLE `orderitem_tags` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `orderitem_tags` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ordertable`
@@ -557,16 +438,6 @@ CREATE TABLE `ordertable` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ordertable`
---
-
-LOCK TABLES `ordertable` WRITE;
-/*!40000 ALTER TABLE `ordertable` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `ordertable` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shoppingcart`
 --
 
@@ -584,16 +455,6 @@ CREATE TABLE `shoppingcart` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shoppingcart`
---
-
-LOCK TABLES `shoppingcart` WRITE;
-/*!40000 ALTER TABLE `shoppingcart` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `shoppingcart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shoppingcart_comments`
 --
 
@@ -607,16 +468,6 @@ CREATE TABLE `shoppingcart_comments` (
   CONSTRAINT `FK_rwpdkk90eckic3tldt2pyeoh4` FOREIGN KEY (`ShoppingCart_id`) REFERENCES `shoppingcart` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shoppingcart_comments`
---
-
-LOCK TABLES `shoppingcart_comments` WRITE;
-/*!40000 ALTER TABLE `shoppingcart_comments` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `shoppingcart_comments` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `storage`
@@ -640,16 +491,6 @@ CREATE TABLE `storage` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `storage`
---
-
-LOCK TABLES `storage` WRITE;
-/*!40000 ALTER TABLE `storage` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `storage` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tax`
 --
 
@@ -664,16 +505,6 @@ CREATE TABLE `tax` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tax`
---
-
-LOCK TABLES `tax` WRITE;
-/*!40000 ALTER TABLE `tax` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `tax` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `useraccount`
@@ -743,15 +574,7 @@ CREATE TABLE `warehouse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `warehouse`
---
 
-LOCK TABLES `warehouse` WRITE;
-/*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
-
-/*!40000 ALTER TABLE `warehouse` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
