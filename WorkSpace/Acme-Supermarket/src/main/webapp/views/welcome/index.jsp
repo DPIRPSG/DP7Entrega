@@ -81,8 +81,10 @@
 </p>
 
 <!-- Listing grid -->
-<security:authorize access="hasRole('CONSUMER')">
 
+
+<security:authorize access="hasRole('CONSUMER')">
+<jstl:if test="${hayItem}">
 	<h3>
 		<spring:message code="consumer.item.bestSelling" />
 		:
@@ -126,5 +128,10 @@
 	<a href="item/consumer/add.do?itemId=${item.id}&?keyword="> <spring:message
 			code="consumer.item.add" />
 	</a>
+</jstl:if>
+
+<jstl:if test="${noHayItem}">
+<spring:message code="welcome.message"/>
+</jstl:if>
 
 </security:authorize>
